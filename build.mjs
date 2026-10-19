@@ -35,7 +35,7 @@ function meta({ title, desc, path, image = "img/og.jpg" }) {
     `<meta property="og:image" content="${SITE}/${image}">`,
     `<meta property="og:image:width" content="1200">`,
     `<meta property="og:image:height" content="630">`,
-    `<meta property="og:image:alt" content="The Frosted Nug canning line in 3D, seen from above the south-east corner.">`,
+    `<meta property="og:image:alt" content="The GrowTopia Canning Line in 3D, seen from above the south-east corner.">`,
     `<meta name="twitter:card" content="summary_large_image">`,
     `<meta name="twitter:title" content="${esc(title)}">`,
     `<meta name="twitter:description" content="${esc(desc)}">`,
@@ -67,7 +67,7 @@ function sitebar(page, { sticky = false } = {}) {
   const cur = (p) => (p === page ? ` aria-current="page"` : "");
   const home = page === "index" ? "" : "index.html";
   return `<header class="fn-bar${sticky ? " sticky" : ""}"><div class="fn-bar-in">
-<a class="fn-brand" href="index.html">${CAN}Backline line<small>Frosted Nug</small></a>
+<a class="fn-brand" href="index.html">${CAN}GrowTopia Canning Line</a>
 <nav class="fn-nav" aria-label="Site">
 <a class="fn-opt" href="${home}#machines">Machines</a>
 <a class="fn-opt" href="${home}#apart">Taken apart</a>
@@ -87,7 +87,7 @@ const MACHINES = [
   { id: "tunnel", name: "Tunnel of Love pasteurizer", fact: "Rows of 12, 22 min through", what: "A pusher loads each row of 12 onto the belt. Spray headers heat, hold and cool the cans in three zones, fed by zone pumps, a water heater and a plate heat exchanger on the utility skid.", img: "m-tunnel", alt: "Inside the Tunnel of Love: rows of cans under the spray headers." },
   { id: "dw", name: "Double-wide conveyor", fact: "5 ft of accumulation to the labeler", what: "Takes pasteurized cans from the tunnel discharge and meters them toward the labeler.", img: "m-dw", alt: "Cans leaving the tunnel discharge onto the conveyor." },
   { id: "labeler", name: "PL-501 wrap labeler", fact: "79 in long at true size", what: "A spacing wheel gaps the cans, the applicator peels each label off the web, and the wrap pad and hold-down belt roll it on. The liner rewinds on the second spindle.", img: "m-labeler", alt: "The PL-501 labeler with its label reel above the conveyor." },
-  { id: "table", name: "Rotary collection table", fact: "108 cm turntable", what: "A slow turntable gathers labeled cans inside its guide rail so they can be packed by hand.", img: "m-table", alt: "Labeled Backline cans gathering on the rotary table." },
+  { id: "table", name: "Rotary collection table", fact: "108 cm turntable", what: "A slow turntable gathers labeled cans inside its guide rail so they can be packed by hand.", img: "m-table", alt: "Labeled Growtopia cans gathering on the rotary table." },
 ];
 const machinesHtml = MACHINES.map(
   (m, i) => `        <li class="stn" id="m-${m.id}">
@@ -118,7 +118,7 @@ function splitTop(frag) {
 }
 
 /* ---------- index ---------- */
-const INDEX_DESC = "The Frosted Nug Backline canning line as a live 3D model: nine machines at true size, running at 25 cans a minute. Walk the floor, follow a can, take any machine apart.";
+const INDEX_DESC = "The GrowTopia Canning Line as a live 3D model: nine machines at true size, running at 25 cans a minute. Walk the floor, follow a can, take any machine apart.";
 function buildIndex({ forArtifact }) {
   let s = readFileSync(join(HERE, "src/index.html"), "utf8");
   s = s
@@ -130,7 +130,7 @@ function buildIndex({ forArtifact }) {
     .replace("{{FILM_SRC}}", esc(CFG.filmSrc || ""));
   if (forArtifact) return s;
   const { title, rest } = splitTop(s);
-  return shell({ head: title + "\n" + meta({ title: "Backline canning line, live in 3D", desc: INDEX_DESC, path: "" }), body: rest });
+  return shell({ head: title + "\n" + meta({ title: "GrowTopia Canning Line, live in 3D", desc: INDEX_DESC, path: "" }), body: rest });
 }
 
 /* ---------- explore: the 3D app, with local three.js, the site bar, deep links and an embed mode ---------- */
@@ -218,7 +218,7 @@ function buildExplore() {
   s = s.replace(t0, "const tourAllowed = () => !window.__l3hold && (");
   s = s.replace("The 3D engine (three.js) didn't load. Check your connection and reload the page.", "The 3D engine didn't load. Reload the page to try again.");
   s = s.replace('<main class="l3-page">', `${sitebar("explore")}\n<main class="l3-page" id="main">`);
-  const head = [`<title>Explore the Backline Line</title>`, EXPLORE_HEAD_SCRIPT, meta({ title: "Explore the Backline canning line in 3D", desc: "Walk, orbit and take apart every machine on the Frosted Nug canning line, live in your browser.", path: "explore.html" }), EXPLORE_CSS].join("\n");
+  const head = [`<title>Explore the GrowTopia Canning Line</title>`, EXPLORE_HEAD_SCRIPT, meta({ title: "Explore the GrowTopia Canning Line in 3D", desc: "Walk, orbit and take apart every machine on the GrowTopia Canning Line, live in your browser.", path: "explore.html" }), EXPLORE_CSS].join("\n");
   return shell({ head, body: s + "\n" + DEEPLINK_JS });
 }
 
@@ -235,7 +235,7 @@ ${SITEBAR_CSS}
 function buildBlueprint() {
   const src = readFileSync(SRC_2D, "utf8");
   const { rest } = splitTop(src);
-  const head = [`<title>Backline Line Drawing</title>`, meta({ title: "The Backline canning line, as a technical drawing", desc: "An isometric drawing of the Frosted Nug canning line: four viewpoints, every machine taken apart, speed and labeler what-ifs.", path: "blueprint.html" }), BP_CSS].join("\n");
+  const head = [`<title>GrowTopia Canning Line Drawing</title>`, meta({ title: "The GrowTopia Canning Line, as a technical drawing", desc: "An isometric drawing of the GrowTopia Canning Line: four viewpoints, every machine taken apart, speed and labeler what-ifs.", path: "blueprint.html" }), BP_CSS].join("\n");
   return shell({ head, body: sitebar("blueprint") + "\n" + rest });
 }
 
