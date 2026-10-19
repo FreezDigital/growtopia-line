@@ -10,6 +10,7 @@ const CFG = JSON.parse(readFileSync(join(HERE, "config.json"), "utf8"));
 const SITE = CFG.siteUrl.replace(/\/$/, "");
 const SRC_3D = process.env.SRC_3D || "/root/canning-3d/artifact/index.html";
 const SRC_2D = process.env.SRC_2D || "/root/canning-line/artifact/canning-line.html";
+const SRC_SNAPS = process.env.SRC_SNAPS || "/root/pulsar/out/pulsar-351.html";
 const SRC_2D_VIEWS = process.env.SRC_2D_VIEWS || "/root/canning-line/artifact/views";
 const ARTIFACT = process.argv.includes("--artifact");
 
@@ -52,7 +53,7 @@ const SITEBAR_CSS = `
 .fn-brand svg{width:20px;height:20px;flex:none}
 .fn-brand small{font:400 13px/1 ui-sans-serif,system-ui,sans-serif;font-stretch:100%;color:var(--fn-muted,var(--steel,#8c8c90));letter-spacing:0}
 .fn-nav{display:flex;gap:22px;margin-left:auto;align-items:center}
-.fn-nav a{color:var(--fn-text,var(--text,#57575a));text-decoration:none;font:14px/1 ui-sans-serif,system-ui,sans-serif;padding:8px 0}
+.fn-nav a{white-space:nowrap;color:var(--fn-text,var(--text,#57575a));text-decoration:none;font:14px/1 ui-sans-serif,system-ui,sans-serif;padding:8px 0}
 .fn-nav a:hover,.fn-nav a[aria-current="page"]{color:var(--fn-ink,var(--ink,#18181a))}
 .fn-nav a[aria-current="page"]{text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--fn-accent,var(--accent,#5078b0))}
 .fn-nav a.fn-cta[aria-current="page"]{color:var(--fn-on-ink,var(--on-ink,#f2f2ef));text-decoration:none}
@@ -72,7 +73,8 @@ function sitebar(page, { sticky = false } = {}) {
 <a class="fn-opt" href="${home}#machines">Machines</a>
 <a class="fn-opt" href="${home}#apart">Taken apart</a>
 <a class="fn-opt" href="${home}#film">Film</a>
-<a href="blueprint.html"${cur("blueprint")}>Drawing</a>
+<a href="snaps.html"${cur("snaps")}>Snaps line</a>
+<a class="fn-opt" href="blueprint.html"${cur("blueprint")}>Drawing</a>
 <a class="fn-cta" href="explore.html"${cur("explore")}>Explore in 3D</a>
 </nav></div></header>`;
 }
@@ -239,6 +241,16 @@ function buildBlueprint() {
   return shell({ head, body: sitebar("blueprint") + "\n" + rest });
 }
 
+/* ---------- snaps: the Easysnap Pulsar 351 anatomy page ---------- */
+function buildSnaps() {
+  let src = readFileSync(SRC_SNAPS, "utf8");
+  src = src.replace(/<title>Easysnap Pulsar 351<\/title>/, "<title>Growtopia Snaps Line · Easysnap Pulsar 351</title>");
+  const head = [meta({ title: "Growtopia Snaps on the Easysnap Pulsar 351", desc: "The Easysnap Pulsar 351 making Growtopia Snaps: film to filled, sealed, coded and snapped, 8 lanes at up to 320 packs a minute. Take it apart, follow a pack, snap one open.", path: "snaps.html", image: "img/snaps-1400.webp" }), BP_CSS].join("\n");
+  src = src.replace("</head>", head + "\n</head>");
+  src = src.replace(/<body([^>]*)>/, (m) => m + "\n" + sitebar("snaps"));
+  return src;
+}
+
 /* ---------- 404, robots, sitemap ---------- */
 function build404() {
   const head = `<title>Page Not Found</title>\n<link rel="icon" href="favicon.svg" type="image/svg+xml">\n<meta name="robots" content="noindex">
@@ -261,10 +273,11 @@ const out = (name, text) => { writeFileSync(join(HERE, name), text); console.log
 out("index.html", buildIndex({ forArtifact: false }));
 out("explore.html", buildExplore());
 out("blueprint.html", buildBlueprint());
+out("snaps.html", buildSnaps());
 out("404.html", build404());
 out("robots.txt", `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
 const today = new Date().toISOString().slice(0, 10);
-out("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["", "explore.html", "blueprint.html"].map((p) => `  <url><loc>${SITE}/${p}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`);
+out("sitemap.xml", `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${["", "explore.html", "snaps.html", "blueprint.html"].map((p) => `  <url><loc>${SITE}/${p}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`);
 
 // 2D view fragments
 rmSync(join(HERE, "views"), { recursive: true, force: true });
