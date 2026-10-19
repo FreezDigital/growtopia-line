@@ -68,12 +68,12 @@ function sitebar(page, { sticky = false } = {}) {
   const cur = (p) => (p === page ? ` aria-current="page"` : "");
   const home = page === "index" ? "" : "index.html";
   return `<header class="fn-bar${sticky ? " sticky" : ""}"><div class="fn-bar-in">
-<a class="fn-brand" href="index.html">${CAN}GrowTopia Canning Line</a>
+<a class="fn-brand" href="index.html">${CAN}GrowTopia Manufacturing</a>
 <nav class="fn-nav" aria-label="Site">
-<a class="fn-opt" href="${home}#machines">Machines</a>
+<a class="fn-opt" href="${home}#machines">Canning Line</a>
 <a class="fn-opt" href="${home}#apart">Taken apart</a>
 <a class="fn-opt" href="${home}#film">Film</a>
-<a href="snaps.html"${cur("snaps")}>Snaps line</a>
+<a href="snaps.html"${cur("snaps")}>Snaps Line</a>
 <a class="fn-opt" href="blueprint.html"${cur("blueprint")}>Drawing</a>
 <a class="fn-cta" href="explore.html"${cur("explore")}>Explore in 3D</a>
 </nav></div></header>`;
@@ -220,7 +220,7 @@ function buildExplore() {
   s = s.replace(t0, "const tourAllowed = () => !window.__l3hold && (");
   s = s.replace("The 3D engine (three.js) didn't load. Check your connection and reload the page.", "The 3D engine didn't load. Reload the page to try again.");
   s = s.replace('<main class="l3-page">', `${sitebar("explore")}\n<main class="l3-page" id="main">`);
-  const head = [`<title>Explore the GrowTopia Canning Line</title>`, EXPLORE_HEAD_SCRIPT, meta({ title: "Explore the GrowTopia Canning Line in 3D", desc: "Walk, orbit and take apart every machine on the GrowTopia Canning Line, live in your browser.", path: "explore.html" }), EXPLORE_CSS].join("\n");
+  const head = [`<title>Explore the Canning Line · GrowTopia Manufacturing</title>`, EXPLORE_HEAD_SCRIPT, meta({ title: "Explore the GrowTopia Canning Line in 3D", desc: "Walk, orbit and take apart every machine on the GrowTopia Canning Line, live in your browser.", path: "explore.html" }), EXPLORE_CSS].join("\n");
   return shell({ head, body: s + "\n" + DEEPLINK_JS });
 }
 
@@ -237,15 +237,15 @@ ${SITEBAR_CSS}
 function buildBlueprint() {
   const src = readFileSync(SRC_2D, "utf8");
   const { rest } = splitTop(src);
-  const head = [`<title>GrowTopia Canning Line Drawing</title>`, meta({ title: "The GrowTopia Canning Line, as a technical drawing", desc: "An isometric drawing of the GrowTopia Canning Line: four viewpoints, every machine taken apart, speed and labeler what-ifs.", path: "blueprint.html" }), BP_CSS].join("\n");
+  const head = [`<title>Canning Line Drawing · GrowTopia Manufacturing</title>`, meta({ title: "The GrowTopia Canning Line, as a technical drawing", desc: "An isometric drawing of the GrowTopia Canning Line: four viewpoints, every machine taken apart, speed and labeler what-ifs.", path: "blueprint.html" }), BP_CSS].join("\n");
   return shell({ head, body: sitebar("blueprint") + "\n" + rest });
 }
 
 /* ---------- snaps: the Easysnap Pulsar 351 anatomy page ---------- */
 function buildSnaps() {
   let src = readFileSync(SRC_SNAPS, "utf8");
-  src = src.replace(/<title>Easysnap Pulsar 351<\/title>/, "<title>Growtopia Snaps Line · Easysnap Pulsar 351</title>");
-  const head = [meta({ title: "Growtopia Snaps on the Easysnap Pulsar 351", desc: "The Easysnap Pulsar 351 making Growtopia Snaps: film to filled, sealed, coded and snapped, 8 lanes at up to 320 packs a minute. Take it apart, follow a pack, snap one open.", path: "snaps.html", image: "img/snaps-1400.webp" }), BP_CSS].join("\n");
+  src = src.replace(/<title>Easysnap Pulsar 351<\/title>/, "<title>Snaps Line · GrowTopia Manufacturing</title>");
+  const head = [meta({ title: "The Snaps Line: Growtopia Snaps on the Easysnap Pulsar 351", desc: "The Easysnap Pulsar 351 making Growtopia Snaps: film to filled, sealed, coded and snapped, 8 lanes at up to 320 packs a minute. Take it apart, follow a pack, snap one open.", path: "snaps.html", image: "img/snaps-1400.webp" }), BP_CSS].join("\n");
   src = src.replace("</head>", head + "\n</head>");
   src = src.replace(/<body([^>]*)>/, (m) => m + "\n" + sitebar("snaps"));
   return src;
