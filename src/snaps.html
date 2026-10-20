@@ -1,0 +1,182 @@
+<title>Snaps Line · GrowTopia Manufacturing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+{{META}}
+{{INDEX_STYLE}}
+<style>
+/* Snaps Line overview: the same spec-sheet language as the canning page, set for one machine read in process order. */
+.window.still{display:block;aspect-ratio:8/7}
+.hero h1 .sub{font-size:.4em;line-height:1.05;margin-top:.28em;font-stretch:75%}
+.window.still img{object-fit:contain;padding:10px}
+.flow-note{margin-top:-18px;margin-bottom:28px;font-size:14px;color:var(--steel);max-width:70ch}
+.group{font:12px/1.4 var(--mono);color:var(--steel);text-transform:uppercase;letter-spacing:.06em;padding:28px 0 10px;border-bottom:1px solid var(--rule)}
+.group:first-child{padding-top:0}
+.stn .no small{display:block;font:11px/1.3 var(--mono);color:var(--steel);letter-spacing:.04em;margin-top:8px;font-stretch:100%}
+.apart .shot img{object-fit:contain}
+.pack{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:center}
+.pack figure{margin:0;aspect-ratio:3/2;border-radius:3px;background:var(--plate);box-shadow:var(--shade);overflow:hidden;display:grid;place-items:center}
+.pack figure img{width:86%;height:auto}
+.pack ol{margin:22px 0 0;padding:0;list-style:none;counter-reset:s;border-top:1px solid var(--rule)}
+.pack ol li{counter-increment:s;display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;padding-block:14px;border-bottom:1px solid var(--rule);font-size:15px}
+.pack ol li::before{content:counter(s,decimal-leading-zero);font:13px/1.6 var(--mono);color:var(--steel)}
+.pack ol b{color:var(--ink);font-weight:600}
+.flavours{display:flex;flex-wrap:wrap;gap:14px 26px;margin-top:26px;font-size:14px}
+.flavours span{display:inline-flex;align-items:center;gap:10px}
+.flavours i{width:14px;height:22px;border-radius:2px;background:var(--c);box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+.flavours-note{margin-top:12px;font-size:12px;color:var(--steel)}
+@media (max-width: 980px){.pack{grid-template-columns:minmax(0,1fr);gap:28px}}
+</style>
+{{SITEBAR}}
+
+<main id="top">
+  <section class="hero" aria-labelledby="h-hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="where">GrowTopia Manufacturing · Carneys Point, New Jersey</p>
+          <h1 id="h-hero"><span>GrowTopia</span><span>Snaps Line</span><span class="thin sub">the Easysnap Pulsar 351</span></h1>
+          <p class="lead">Two films in, filled and sealed single-dose packs out. Every component of the Pulsar 351 drawn piece by piece and running live: watch Growtopia Snaps formed, dosed, sealed, coded and scored, then take the machine apart down to the parts.</p>
+          <div class="acts">
+            <a class="btn primary" href="snaps-explore.html">Explore in 3D</a>
+            <a class="btn" href="snaps-explore.html#apart">Take it apart</a>
+            <a class="btn" href="snaps-drawing.html">Open the drawing</a>
+          </div>
+        </div>
+        <div>
+          <div class="window" data-window>
+            <img src="img/snaps-hero-1600.webp" srcset="img/snaps-hero-800.webp 800w, img/snaps-hero-1600.webp 1600w" sizes="(max-width: 980px) 100vw, 700px" {{SZ:snaps-hero-1600}} alt="Isometric drawing of the Easysnap Pulsar 351: the film reels and sealing station inside the guarded frame, the pressure tank on its stand at the right and rows of Growtopia Snaps riding out on the blue conveyor." fetchpriority="high">
+            <button type="button" class="run" data-run><i aria-hidden="true"></i>Run the machine live</button>
+            <span class="state" data-state hidden>Starting the machine</span>
+          </div>
+          <div class="window-foot">
+            <span>Drag to orbit. Click any part to read about it.</span>
+            <a href="snaps-explore.html">Open the full 3D explorer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="plate" aria-labelledby="h-plate">
+        <i class="s1" aria-hidden="true"></i><i class="s2" aria-hidden="true"></i>
+        <div class="plate-head">
+          <h2 id="h-plate">Line data</h2>
+          <span>Easysnap Pulsar 351</span>
+        </div>
+        <dl class="spec">
+          <div><dt>Output</dt><dd><b class="num">320</b><small>packs/min</small><p>Up to, on 8 lanes at 40 cycles a minute.</p></dd></div>
+          <div><dt>Cycle rate</dt><dd><b class="num">40</b><small>cycles/min</small><p>Up to. One row of packs per cycle.</p></dd></div>
+          <div><dt>Lanes</dt><dd><b class="num">4–8</b><small>lanes</small><p>Packs side by side across the web.</p></dd></div>
+          <div><dt>Reel width</dt><dd><b class="num">351</b><small>mm</small><p>One reel width for every Easysnap pack size.</p></dd></div>
+          <div><dt>Fill</dt><dd><b class="num">0.1–30</b><small>ml</small><p>Per pack. The maximum depends on the product's viscosity.</p></dd></div>
+          <div><dt>Product tank</dt><dd><b class="num">316L</b><small>stainless</small><p>A pressure tank feeds the dosing pump.</p></dd></div>
+          <div><dt>Print frame</dt><dd><b class="num">351 × 100</b><small>mm</small><p>Thermal transfer, for the lot and date code.</p></dd></div>
+          <div><dt>Footprint</dt><dd><b class="num">≈ 2.8 × 1.6</b><small>m</small><p>With the outfeed; about 2.0 m to the stack light. Estimated from photos.</p></dd></div>
+        </dl>
+        <p class="plate-note">Values come from Easysnap's published specifications. The footprint is estimated from photos, scaled from the 351 mm reel; Easysnap doesn't publish overall dimensions. The machine is built ready for Industry 4.0 remote monitoring.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="process" aria-labelledby="h-process">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-process">Film to finished pack, step by step</h2>
+        <p>The machine in the order a pack meets it. Numbers are Easysnap's own for each component. See any part run, take it apart, or follow its assembly steps.</p>
+      </div>
+{{SNAPS_COMPONENTS}}
+    </div>
+  </section>
+
+  <section class="sec" id="apart" aria-labelledby="h-apart">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="h-apart">Taken apart</h2>
+        <p>The Pulsar separates into its assemblies, the order a technician would take it down. Pick one and it comes apart into its own numbered parts, with a parts list and the steps to build it back.</p>
+      </div>
+      <div class="apart">
+{{SNAPS_APART}}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="pack" aria-labelledby="h-pack">
+    <div class="wrap">
+      <div class="pack">
+        <figure><img src="img/snaps-pack-800.webp" {{SZ:snaps-pack-800}} loading="lazy" alt="A Growtopia Snaps pack: a flat green single-dose pouch with the gold Growtopia Farms mark and a white lot and date code panel."></figure>
+        <div>
+          <h2 id="h-pack" class="big">Growtopia Snaps</h2>
+          <p class="bp-lead">A flat, semi-rigid single-dose pack. No cap, no tear strip: it opens along the line the precut system scores across it.</p>
+          <ol>
+            <li><span><b>Bend it into a V</b> along the scored line, with the pack's face toward you.</span></li>
+            <li><span><b>It snaps open</b> at the score, at the point of the V.</span></li>
+            <li><span><b>Pour with one hand</b>, squeezing the two halves together.</span></li>
+          </ol>
+          <div class="flavours" aria-label="The six Growtopia Snaps flavours">
+{{SNAPS_FLAVOURS}}
+          </div>
+          <p class="flavours-note">Flavour colours are placeholders until the label art is final.</p>
+          <div class="acts"><a class="btn" href="snaps-drawing.html#snap">Snap one open</a><a class="btn" href="snaps-drawing.html#follow">Follow a pack</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="blueprint" aria-labelledby="h-bp">
+    <div class="wrap">
+      <div class="bp">
+        <figure><img src="img/snaps-exploded-1400.webp" {{SZ:snaps-exploded-1400}} loading="lazy" alt="The Easysnap Pulsar 351 taken apart into its assemblies: the glass cover and top film lifted, the doors swung out, the tank and air supply moved aside and the conveyor slid forward."></figure>
+        <div>
+          <h2 id="h-bp" class="big">The drawing</h2>
+          <p class="bp-lead">The Pulsar 351 as an isometric technical drawing, light enough for any laptop or phone.</p>
+          <ul>
+            <li>The process running live, with lanes, speed, fill and flavour</li>
+            <li>A two-level take-apart: the assemblies, then each one down to its parts</li>
+            <li>A parts list and step-by-step assembly sheet for every assembly</li>
+            <li>Follow one pack from the reel to the conveyor</li>
+            <li>Snap a finished pack open</li>
+          </ul>
+          <div class="acts"><a class="btn primary" href="snaps-drawing.html">Open the drawing</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b>Built by Freez Digital</b> for GrowTopia.</p>
+    <p>Modeled from Easysnap Technology's published Pulsar 351 information and photos. Easysnap and Pulsar are names of their maker.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Hero: the poster paints first; the live line loads afterwards, on its own, only where it will run well.
+  var win = document.querySelector("[data-window]");
+  var run = win.querySelector("[data-run]");
+  var state = win.querySelector("[data-state]");
+  var started = false;
+  function webgl() {
+    try { var c = document.createElement("canvas"); return !!(window.WebGLRenderingContext && (c.getContext("webgl2") || c.getContext("webgl"))); } catch (e) { return false; }
+  }
+  function start() {
+    if (started) return;
+    started = true;
+    win.classList.add("loading");
+    state.hidden = false;
+    var f = document.createElement("iframe");
+    f.title = "Live 3D view of the Pulsar 351";
+    f.src = "snaps-explore.html#embed";
+    f.setAttribute("loading", "eager");
+    f.setAttribute("allow", "fullscreen");
+    f.allowFullscreen = true;
+    f.addEventListener("load", function () {
+      var tries = 0;
+      (function wait() {
+        var ready = false;
+        try { ready = !!f.contentWindow.__snReady; } catch (e) { ready = true; }
+        if (ready) { win.classList.remove("loading"); win.classList.add("live"); return; }
+        var failed = false;
+        try { failed = !!f.contentWindow.__snFailed; } catch (e) {}
+        if (failed) { state.textContent = "3D isn't available here. The drawing still works."; return; }
+        if (++tries < 400) setTimeout(wait, 150);
+      })();
+</script>

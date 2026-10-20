@@ -27,22 +27,36 @@
 @font-face{font-family:"Archivo";font-style:normal;font-weight:100 900;font-stretch:62% 125%;font-display:swap;src:url(fonts/archivo-wdth.woff2) format("woff2-variations"),url(fonts/archivo-wdth.woff2) format("woff2")}
 :root{--fn-bar-bg:var(--page);--fn-bar-rule:var(--line);--fn-ink:var(--strong);--fn-text:var(--text);--fn-muted:var(--muted);--fn-accent:#5078b0;--fn-on-ink:var(--page)}
 
-.fn-bar{position:relative;z-index:20;background:var(--fn-bar-bg,var(--floor,#f2f2ef));border-bottom:1px solid var(--fn-bar-rule,var(--rule,#b4b4b8))}
+:root{--fnb-bg:#f2f2ef;--fnb-ink:#18181a;--fnb-text:#57575a;--fnb-muted:#8c8c90;--fnb-rule:#d2d2ce;--fnb-accent:#5078b0;--fnb-on:#f2f2ef;--fnb-panel:#fbfbf9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--fnb-bg:#121212;--fnb-ink:#ececea;--fnb-text:#b4b4b2;--fnb-muted:#7c7c80;--fnb-rule:#2e2e2e;--fnb-accent:#86a8dc;--fnb-on:#121212;--fnb-panel:#181818}}
+:root[data-theme="dark"]{--fnb-bg:#121212;--fnb-ink:#ececea;--fnb-text:#b4b4b2;--fnb-muted:#7c7c80;--fnb-rule:#2e2e2e;--fnb-accent:#86a8dc;--fnb-on:#121212;--fnb-panel:#181818}
+.fn-bar{position:relative;z-index:40;background:var(--fnb-bg);border-bottom:1px solid var(--fnb-rule);color:var(--fnb-text)}
 .fn-bar.sticky{position:sticky;top:env(safe-area-inset-top,0px)}
 .fn-bar-in{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));min-height:56px;display:flex;align-items:center;gap:24px}
-.fn-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--fn-ink,var(--ink,#18181a));font:800 19px/1 "Archivo",ui-sans-serif,system-ui,sans-serif;font-stretch:70%;letter-spacing:.01em;white-space:nowrap}
+.fn-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--fnb-ink);font:800 19px/1 "Archivo",ui-sans-serif,system-ui,sans-serif;font-stretch:70%;letter-spacing:.01em;white-space:nowrap}
 .fn-brand svg{width:20px;height:20px;flex:none}
-.fn-brand small{font:400 13px/1 ui-sans-serif,system-ui,sans-serif;font-stretch:100%;color:var(--fn-muted,var(--steel,#8c8c90));letter-spacing:0}
-.fn-nav{display:flex;gap:22px;margin-left:auto;align-items:center}
-.fn-nav a{white-space:nowrap;color:var(--fn-text,var(--text,#57575a));text-decoration:none;font:14px/1 ui-sans-serif,system-ui,sans-serif;padding:8px 0}
-.fn-nav a:hover,.fn-nav a[aria-current="page"]{color:var(--fn-ink,var(--ink,#18181a))}
-.fn-nav a[aria-current="page"]{text-decoration:underline;text-underline-offset:6px;text-decoration-color:var(--fn-accent,var(--accent,#5078b0))}
-.fn-nav a.fn-cta[aria-current="page"]{color:var(--fn-on-ink,var(--on-ink,#f2f2ef));text-decoration:none}
-.fn-nav .fn-cta{background:var(--fn-ink,var(--ink,#18181a));color:var(--fn-on-ink,var(--on-ink,#f2f2ef));padding:10px 14px;border-radius:3px;font-weight:500}
-.fn-nav .fn-cta:hover{color:var(--fn-on-ink,var(--on-ink,#f2f2ef));background:var(--fn-accent,var(--accent,#5078b0))}
-.fn-bar a:focus-visible{outline:2px solid var(--fn-accent,var(--accent,#5078b0));outline-offset:3px;border-radius:2px}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--fn-bar-bg,var(--floor,#f2f2ef))}
-@media (max-width: 760px){.fn-nav .fn-opt{display:none}.fn-brand small{display:none}}
+.fn-nav{display:flex;gap:6px;margin-left:auto;align-items:center}
+.fn-line{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--fnb-rule);border-radius:4px}
+.fn-line > b{font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--fnb-muted);padding:0 8px 0 6px}
+.fn-nav a{white-space:nowrap;color:var(--fnb-text);text-decoration:none;font:14px/1 ui-sans-serif,system-ui,sans-serif;padding:8px 9px;border-radius:3px}
+.fn-nav a:hover{color:var(--fnb-ink);background:color-mix(in srgb,var(--fnb-ink) 7%,transparent)}
+.fn-nav a[aria-current="page"]{color:var(--fnb-on);background:var(--fnb-ink)}
+.fn-bar a:focus-visible,.fn-menu-btn:focus-visible{outline:2px solid var(--fnb-accent);outline-offset:2px}
+.fn-nav a.fn-home{display:none}
+.fn-menu-btn{display:none;margin-left:auto;align-items:center;gap:8px;min-height:40px;padding:0 12px;border:1px solid var(--fnb-rule);border-radius:4px;background:var(--fnb-panel);color:var(--fnb-ink);font:500 14px/1 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+.fn-menu-btn i{display:block;width:16px;height:10px;border-top:2px solid currentColor;border-bottom:2px solid currentColor;position:relative}
+.fn-menu-btn i::after{content:"";position:absolute;left:0;right:0;top:2px;border-top:2px solid currentColor}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:50;background:var(--fnb-bg)}
+@media (max-width: 980px){
+  .fn-menu-btn{display:inline-flex}
+  .fn-nav{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:14px;margin:0;padding:16px max(20px,env(safe-area-inset-right,0px)) 20px max(20px,env(safe-area-inset-left,0px));background:var(--fnb-panel);border-bottom:1px solid var(--fnb-rule);box-shadow:0 18px 30px -18px rgba(0,0,0,.35)}
+  .fn-bar.open .fn-nav{display:flex}
+  .fn-line{flex-wrap:wrap;border:0;padding:0;gap:6px}
+  .fn-line > b{width:100%;padding:0 0 4px}
+  .fn-nav a{font-size:16px;padding:12px 14px;border:1px solid var(--fnb-rule);background:var(--fnb-bg);flex:1 1 auto;text-align:center}
+  .fn-nav a.fn-home{display:block;text-align:left;font-weight:500}
+}
+@media (max-width: 420px){.fn-brand{font-size:17px}.fn-brand-x{display:none}}
 
 .l3-page{margin-top:20px}
 .fn-bar-in{max-width:1320px}
@@ -217,16 +231,22 @@ html.l3-noscroll,html.l3-noscroll body{overflow:hidden}
 }
 .l3-manual .l3-lab,.l3-manual .l3-loading{transition:none}
 </style>
-<header class="fn-bar"><div class="fn-bar-in">
-<a class="fn-brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M9 5.5c0-1.4 3.1-2.5 7-2.5s7 1.1 7 2.5V7l1 1.6V25l-1 1.5c0 1.4-3.1 2.5-7 2.5s-7-1.1-7-2.5L8 25V8.6L9 7z"/><path fill="var(--fn-accent,var(--accent,#5078b0))" d="M8 19h16v3.4H8z"/></svg>GrowTopia Manufacturing</a>
-<nav class="fn-nav" aria-label="Site">
-<a class="fn-opt" href="index.html#machines">Canning Line</a>
-<a class="fn-opt" href="index.html#apart">Taken apart</a>
-<a class="fn-opt" href="index.html#film">Film</a>
-<a href="snaps.html">Snaps Line</a>
-<a class="fn-opt" href="blueprint.html">Drawing</a>
-<a class="fn-cta" href="explore.html" aria-current="page">Explore in 3D</a>
+<header class="fn-bar" data-fn-bar><div class="fn-bar-in">
+<a class="fn-brand" href="index.html"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M9 5.5c0-1.4 3.1-2.5 7-2.5s7 1.1 7 2.5V7l1 1.6V25l-1 1.5c0 1.4-3.1 2.5-7 2.5s-7-1.1-7-2.5L8 25V8.6L9 7z"/><path fill="var(--fn-accent,var(--accent,#5078b0))" d="M8 19h16v3.4H8z"/></svg><span>GrowTopia<span class="fn-brand-x"> Manufacturing</span></span></a>
+<button type="button" class="fn-menu-btn" aria-expanded="false" aria-controls="fn-nav" data-fn-menu><i aria-hidden="true"></i>Menu</button>
+<nav class="fn-nav" id="fn-nav" aria-label="Site">
+<a class="fn-home" href="index.html">← GrowTopia Manufacturing home</a>
+<div class="fn-line" role="group" aria-label="Canning Line"><b>Canning Line</b>
+<a href="index.html">Overview</a>
+<a href="explore.html" aria-current="page">3D</a>
+<a href="blueprint.html">Drawing</a>
+<a href="index.html#film">Film</a></div>
+<div class="fn-line" role="group" aria-label="Snaps Line"><b>Snaps Line</b>
+<a href="snaps.html">Overview</a>
+<a href="snaps-explore.html">3D</a>
+<a href="snaps-drawing.html">Drawing</a></div>
 </nav></div></header>
+<script>(function(){var b=document.querySelector("[data-fn-bar]"),t=b&&b.querySelector("[data-fn-menu]");if(!t)return;function set(o){b.classList.toggle("open",o);t.setAttribute("aria-expanded",o?"true":"false")}t.addEventListener("click",function(){set(!b.classList.contains("open"))});document.addEventListener("keydown",function(e){if(e.key==="Escape")set(false)});document.addEventListener("click",function(e){if(!b.contains(e.target))set(false)})})();</script>
 <main class="l3-page" id="main">
 <figure class="l3" data-l3>
   <div class="l3-plate">

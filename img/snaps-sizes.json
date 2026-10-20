@@ -1,0 +1,100 @@
+{
+ "sizes": {
+  "snaps-1400": [
+   1181,
+   1034
+  ],
+  "snaps-c01-800": [
+   800,
+   517
+  ],
+  "snaps-c02-800": [
+   800,
+   517
+  ],
+  "snaps-c03-800": [
+   800,
+   517
+  ],
+  "snaps-c04-800": [
+   800,
+   517
+  ],
+  "snaps-c05-800": [
+   800,
+   517
+  ],
+  "snaps-c06-800": [
+   800,
+   517
+  ],
+  "snaps-c07-800": [
+   800,
+   517
+  ],
+  "snaps-c08-800": [
+   800,
+   517
+  ],
+  "snaps-c09-800": [
+   800,
+   517
+  ],
+  "snaps-c10-800": [
+   800,
+   517
+  ],
+  "snaps-c11-800": [
+   800,
+   517
+  ],
+  "snaps-exploded-1400": [
+   1400,
+   905
+  ],
+  "snaps-hero-1600": [
+   1181,
+   1034
+  ],
+  "snaps-hero-800": [
+   800,
+   700
+  ],
+  "snaps-iso-fill-960": [
+   960,
+   720
+  ],
+  "snaps-iso-outfeed-960": [
+   960,
+   720
+  ],
+  "snaps-iso-seal-960": [
+   960,
+   720
+  ],
+  "snaps-pack-800": [
+   636,
+   441
+  ]
+ },
+ "sources": {
+  "hero": "final",
+  "og": "final",
+  "comp-01": "final",
+  "comp-02": "final",
+  "comp-03": "final",
+  "comp-04": "final",
+  "comp-05": "final",
+  "comp-06": "final",
+  "comp-07": "final",
+  "comp-08": "final",
+  "comp-09": "final",
+  "comp-10": "final",
+  "comp-11": "final",
+  "iso-fill": "final",
+  "iso-outfeed": "final",
+  "iso-seal": "final",
+  "exploded": "final",
+  "pack": "final"
+ }
+}
